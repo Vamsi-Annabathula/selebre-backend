@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "selebre-backend", "selebre-backend\selebre-backend.csproj", "{377A6C3F-6140-4AD7-85AC-9AE920E8417E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailService", "EmailService\EmailService.csproj", "{683DA753-B8CD-44EF-B7FE-AE3DD08E8285}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selebre.Core", "Selebre.Core\Selebre.Core.csproj", "{07DABE15-1FAF-4B89-8155-789E1BBAE999}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selebre.Concerns", "Selebre.Concerns\Selebre.Concerns.csproj", "{93F34473-AE73-4CB1-95BE-D192B92AACC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{377A6C3F-6140-4AD7-85AC-9AE920E8417E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{377A6C3F-6140-4AD7-85AC-9AE920E8417E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{377A6C3F-6140-4AD7-85AC-9AE920E8417E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{377A6C3F-6140-4AD7-85AC-9AE920E8417E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{683DA753-B8CD-44EF-B7FE-AE3DD08E8285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{683DA753-B8CD-44EF-B7FE-AE3DD08E8285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{683DA753-B8CD-44EF-B7FE-AE3DD08E8285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{683DA753-B8CD-44EF-B7FE-AE3DD08E8285}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07DABE15-1FAF-4B89-8155-789E1BBAE999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07DABE15-1FAF-4B89-8155-789E1BBAE999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07DABE15-1FAF-4B89-8155-789E1BBAE999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07DABE15-1FAF-4B89-8155-789E1BBAE999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93F34473-AE73-4CB1-95BE-D192B92AACC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93F34473-AE73-4CB1-95BE-D192B92AACC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93F34473-AE73-4CB1-95BE-D192B92AACC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93F34473-AE73-4CB1-95BE-D192B92AACC1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {17E057B5-1D76-4BC9-8C92-80C12709DE65}
+	EndGlobalSection
+EndGlobal
