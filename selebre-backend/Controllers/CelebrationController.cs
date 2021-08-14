@@ -21,7 +21,7 @@ namespace selebre_backend.Controllers
 
         
         // GET api/<CelebrationController>/5
-        [HttpGet("{id}")]
+        [HttpGet("myCelebration/{id}")]
         public bool Get(int id)
         {
             return this.celebrationService.IsCelebrationTodayForUser(id);

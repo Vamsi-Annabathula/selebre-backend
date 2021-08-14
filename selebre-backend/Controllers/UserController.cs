@@ -21,15 +21,15 @@ namespace selebre_backend.Controllers
 
         }
 
-        // GET: api/<UserController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        //// GET: api/<UserController>
+        //[HttpGet]
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
 
         // GET api/<UserController>/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}/getMantra")]
         public string Get(int id)
         {
             return this.userService.GetMantra(id);
@@ -43,6 +43,7 @@ namespace selebre_backend.Controllers
         }
 
         // POST api/<UserController>
+        [Route("addComment")]
         [HttpPost]
         public void AddComment([FromBody] CommentView commentView)
         {
