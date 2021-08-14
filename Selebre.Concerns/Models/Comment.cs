@@ -12,7 +12,7 @@ namespace selebre.Concerns.Models
         [Key, Column(Order = 1)]
         public int? GivenToUserId { get; set; }
         public string Comments { get; set; }
-        public string? mediaLocation { get; set; }
+        public string? mediaLink { get; set; }
         public bool IsActive { get; set; }
         public DateTime? CreatedOn { get; set; }
 

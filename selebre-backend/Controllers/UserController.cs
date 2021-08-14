@@ -30,24 +30,30 @@ namespace selebre_backend.Controllers
 
         // GET api/<UserController>/5
         [HttpGet("{id}/getMantra")]
-        public string Get(int id)
+        public ActionResult Get(int id)
         {
-            return this.userService.GetMantra(id);
+
+            string mantra = this.userService.GetMantra(id);
+            if (mantra == null)
+            {
+                return StatusCode(404, "mantra not set for this user");
+            }
+            return StatusCode(200, mantra);
         }
         
         [Route("{id}/getComments")]
         [HttpGet]
-        public List<string> GetCommentsForUser(int id)
+        public List<CommentView> GetCommentsForUser(int id)
         {
             return this.userService.GetCurrentCelebrationComments(id);
         }
 
         // POST api/<UserController>
-        [Route("addComment")]
+        [Route("{id}/addComment")]
         [HttpPost]
-        public void AddComment([FromBody] CommentView commentView)
+        public void AddComment(int id, [FromBody] CommentView commentView)
         {
-            this.userService.AddComment(commentView);
+            this.userService.AddComment(id, commentView);
         }
 
     }

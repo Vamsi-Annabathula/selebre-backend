@@ -17,7 +17,7 @@ using Selebre.Core.Admin;
 using Selebre.Core.User;
 using Selebre.Core.Celebration;
 using Microsoft.OpenApi.Models;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace selebre_backend
 {
@@ -38,6 +38,12 @@ namespace selebre_backend
             services.AddAutoMapper(typeof(AdminSettingsProfile));
             services.AddAutoMapper(typeof(CommentProfile));
 
+            services.AddLogging(loggingBuilder => {
+                loggingBuilder.AddConsole()
+                    .AddFilter(DbLoggerCategory.Database.Command.Name, LogLevel.Information);
+                loggingBuilder.AddDebug();
+            });
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -48,9 +54,9 @@ namespace selebre_backend
                 options.UseSqlServerStorage("Server=tcp:selebre.database.windows.net,1433;Initial Catalog=selebre;Persist Security Info=False;User ID=selebre-user;Password=Technovert@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             });
 
-            services.AddSingleton<IAdminService, AdminService>();
-            services.AddSingleton<IUserService, UserService>();
-            services.AddSingleton<ICelebrationService, CelebrationService>();
+            services.AddScoped<IAdminService, AdminService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICelebrationService, CelebrationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

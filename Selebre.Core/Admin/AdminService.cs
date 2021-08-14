@@ -50,13 +50,21 @@ namespace Selebre.Core.Admin
 
         public List<EmployeeView> GetAllEmployees(int id)
         {
-            List<EmployeeView> employees = new List<EmployeeView>();
+            List<Employee> employees = new List<Employee>();
             using(var ctx = new selebreContext())
             {
-                employees = (List<EmployeeView>)ctx.Employee.Where(emp => emp.AdminId == id);
+                employees = ctx.Employee.Where(emp => emp.AdminId == id).ToList();
             }
 
-            return employees;
+            List<EmployeeView> employeeViews = new List<EmployeeView>();
+            EmployeeView employeeView = new EmployeeView();
+            foreach (var emp in employees)
+            {
+                employeeView = mapper.Map<Employee, EmployeeView>(emp);
+                employeeViews.Add(employeeView);
+            }
+
+            return employeeViews;
         }
 
         // adding non-admin employee

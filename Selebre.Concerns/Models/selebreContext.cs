@@ -38,7 +38,10 @@ namespace selebre.Concerns.Models
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Server=tcp:selebre.database.windows.net,1433;Initial Catalog=selebre;Persist Security Info=False;User ID=selebre-user;Password=Technovert@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
+            optionsBuilder.EnableSensitiveDataLogging(true);
         }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -126,6 +129,8 @@ namespace selebre.Concerns.Models
                     .HasColumnName("createdOn")
                     .HasColumnType("datetime2(3)")
                     .HasDefaultValueSql("(sysdatetime())");
+
+                entity.Property(e => e.mediaLink).HasColumnName("mediaLink");
 
                 entity.Property(e => e.GivenByUserId).HasColumnName("givenByUserId");
 
