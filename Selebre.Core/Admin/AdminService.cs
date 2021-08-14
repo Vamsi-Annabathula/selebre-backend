@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Net.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace Selebre.Core.Admin
 {
@@ -85,9 +86,21 @@ namespace Selebre.Core.Admin
         {
             using(var ctx = new selebreContext())
             {
+                //AdminSettings adminSettings = mapper.Map<AdminSettingsView, AdminSettings>(adminSettingsView);
+                AdminSettings adminSettingsDb = ctx.AdminSettings.AsNoTracking().FirstOrDefault(adminSetting => adminSetting.UserId == adminSettingsView.UserId);
                 AdminSettings adminSettings = mapper.Map<AdminSettingsView, AdminSettings>(adminSettingsView);
-                adminSettings.IsActive = true;
-                ctx.Add(adminSettings);
+               
+                if (adminSettingsDb == null)
+                {
+                    adminSettings.IsActive = true;
+                    ctx.Add(adminSettings);
+                }
+                else
+                {
+                    adminSettingsDb.Mantra = adminSettingsView.Mantra;
+                    ctx.Update(adminSettingsDb);
+                }
+                
                 ctx.SaveChanges();
             }
         }
