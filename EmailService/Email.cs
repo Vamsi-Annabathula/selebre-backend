@@ -10,8 +10,8 @@ namespace EmailService
         {
             EmailMessage message = new EmailMessage
             {
-                Sender = new MailboxAddress("Self", "kavindersingh42@gmail.com"),
-                Reciever = new MailboxAddress("Self", "kavindersingh42@gmail.com"),
+                Sender = new MailboxAddress("Self", "<enter sender mail id>"),
+                Reciever = new MailboxAddress("Self", "<enter receiver mail id>"),
                 Subject = "Welcome",
                 Content = "Hello World!"
             };
@@ -19,7 +19,7 @@ namespace EmailService
             using (SmtpClient smtpClient = new SmtpClient())
             {
                 smtpClient.Connect("smtp.gmail.com",465, true);
-                smtpClient.Authenticate("kavindersingh42@gmail.com","dragoona127");
+                smtpClient.Authenticate("<enter sender gmail id>","<enter sender gmail password>");
                 smtpClient.Send(mimeMessage);
                 smtpClient.Disconnect(true);
             }

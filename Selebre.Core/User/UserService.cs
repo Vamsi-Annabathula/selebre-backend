@@ -28,17 +28,17 @@ namespace Selebre.Core.User
 
                 //var commentDb = ctx.Comment.Find(new int[2] { id, (int)commentView.GivenToUserId });
                 var commentDb = ctx.Comment.AsNoTracking().FirstOrDefault(comm => comm.GivenByUserId == id && comm.GivenToUserId == commentView.GivenToUserId);
-                commentDb = mapper.Map<CommentView, Comment>(commentView);
-                commentDb.GivenByUserId = id;
-                commentDb.IsActive = true;
+                Comment comment = mapper.Map<CommentView, Comment>(commentView);
                 if (commentDb == null)
                 {
-                    
-                    ctx.Add(commentDb);
+                    comment.GivenByUserId = id;
+                    comment.IsActive = true;
+                    ctx.Add(comment);
 
                 }
                 else
                 {
+                    commentDb.Comments = commentView.Comments;
                     ctx.Update(commentDb);
                 }
                 //else

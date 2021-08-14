@@ -29,9 +29,9 @@ namespace selebre_backend.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            Email emailService = new Email();
+            //Email emailService = new Email();
 
-            RecurringJob.AddOrUpdate(() => emailService.SendMail(), "* */22 * * *", TimeZoneInfo.Local);
+            //RecurringJob.AddOrUpdate(() => emailService.SendMail(), "* */22 * * *", TimeZoneInfo.Local);
 
             var rng = new Random();
 
