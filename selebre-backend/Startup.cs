@@ -59,7 +59,7 @@ namespace selebre_backend
             {
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                 builder => {
-                    builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
+                    builder.WithOrigins("http://localhost:3000").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
                 });
             });
 

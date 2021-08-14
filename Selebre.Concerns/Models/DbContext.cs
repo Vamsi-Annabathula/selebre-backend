@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace selebre.Concerns.Models
 {
-    public partial class selebreContext : DbContext
+    public partial class DbContext : Microsoft.EntityFrameworkCore.DbContext
     {
-        public selebreContext()
+        public DbContext()
         {
         }
 
-        public selebreContext(DbContextOptions<selebreContext> options)
+        public DbContext(DbContextOptions<DbContext> options)
             : base(options)
         {
         }

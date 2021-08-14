@@ -16,11 +16,11 @@ namespace EmailService
         public MimeMessage CreateMimeMessageFromEmailMessage(EmailMessage message)
         {
             var mimeMessage = new MimeMessage();
-            mimeMessage.From.Add(message.Sender);
-            mimeMessage.To.Add(message.Reciever);
-            mimeMessage.Subject = message.Subject;
-            mimeMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text)
-            { Text = message.Content };
+            //mimeMessage.From.Add(message.Sender);
+            //mimeMessage.To.Add(message.Reciever);
+            //mimeMessage.Subject = message.Subject;
+            //mimeMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text)
+            //{ Text = message.Content };
             return mimeMessage;
         }
     }

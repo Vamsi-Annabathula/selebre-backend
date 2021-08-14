@@ -21,7 +21,7 @@ namespace Selebre.Core.Admin
         // adding admin employee
         public void AddAdmin(AdminView adminView)
         {
-            using (var ctx = new selebreContext())
+            using (var ctx = new selebre.Concerns.Models.DbContext())
             {
 
                 Employee emp = ctx.Employee.FirstOrDefault(emp => emp.Email == adminView.Email);
@@ -52,7 +52,7 @@ namespace Selebre.Core.Admin
         public List<EmployeeView> GetAllEmployees(int id)
         {
             List<Employee> employees = new List<Employee>();
-            using(var ctx = new selebreContext())
+            using(var ctx = new selebre.Concerns.Models.DbContext())
             {
                 employees = ctx.Employee.Where(emp => emp.AdminId == id).ToList();
             }
@@ -71,7 +71,7 @@ namespace Selebre.Core.Admin
         // adding non-admin employee
         public void AddEmployee(int adminId, EmployeeView employeeView)
         {
-            using (var ctx = new selebreContext())
+            using (var ctx = new selebre.Concerns.Models.DbContext())
             {
                 Employee empdb = mapper.Map<EmployeeView, Employee>(employeeView);
                 empdb.IsActive = true;
@@ -84,7 +84,7 @@ namespace Selebre.Core.Admin
 
         public void AddMantraAndTime(AdminSettingsView adminSettingsView)
         {
-            using(var ctx = new selebreContext())
+            using(var ctx = new selebre.Concerns.Models.DbContext())
             {
                 //AdminSettings adminSettings = mapper.Map<AdminSettingsView, AdminSettings>(adminSettingsView);
                 AdminSettings adminSettingsDb = ctx.AdminSettings.AsNoTracking().FirstOrDefault(adminSetting => adminSetting.UserId == adminSettingsView.UserId);

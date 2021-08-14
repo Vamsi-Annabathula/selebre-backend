@@ -26,7 +26,7 @@ namespace selebre_backend.Controllers
         [HttpPost]
         public IActionResult Signup([FromBody] AuthView authView)
         {
-            using(var ctx = new selebreContext())
+            using(var ctx = new DbContext())
             {
                 var emp = ctx.Employee.FirstOrDefault(emp => emp.Email == authView.Email);
                 if(emp == null)
@@ -49,7 +49,7 @@ namespace selebre_backend.Controllers
         [HttpPost]
         public IActionResult Login([FromBody] AuthView authView)
         {
-            using (var ctx = new selebreContext())
+            using (var ctx = new DbContext())
             {
                 Employee emp = ctx.Employee.FirstOrDefault((emp) => emp.Email == authView.Email);
                 if (emp == null)

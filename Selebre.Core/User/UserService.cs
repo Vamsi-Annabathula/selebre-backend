@@ -20,7 +20,7 @@ namespace Selebre.Core.User
 
         public void AddComment(int id, CommentView commentView)
         {
-            using(var ctx = new selebreContext())
+            using(var ctx = new selebre.Concerns.Models.DbContext())
             {
                 //Comment comment = mapper.Map<CommentView, Comment>(commentView);
                 //comment.GivenByUserId = id;
@@ -56,7 +56,7 @@ namespace Selebre.Core.User
         {
             List<CommentView> commentList = new List<CommentView>();
             CommentView commentView = new CommentView();
-            using (var ctx = new selebreContext())
+            using (var ctx = new selebre.Concerns.Models.DbContext())
             { 
                 //comments = (List<string>)ctx.Comment.Where(comment => comment.GivenToUserId == givenToUserId).SelectMany(comment => comment.Comments);
                 var comments = ctx.Comment.Where(comment => comment.GivenToUserId == givenToUserId).ToList();
@@ -78,7 +78,7 @@ namespace Selebre.Core.User
         public string GetMantra(int id)
         {
             string mantra;
-            using(var ctx = new selebreContext())
+            using(var ctx = new selebre.Concerns.Models.DbContext())
             {
                 mantra = ctx.AdminSettings.FirstOrDefault(adminSetting => adminSetting.UserId == id)?.Mantra;
             }

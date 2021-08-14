@@ -14,7 +14,7 @@ namespace Selebre.Core.Celebration
             DateTime currentDate = DateTime.Now.Date;
             string currentDateAsString = currentDate.ToString("dd/M/yyyy", CultureInfo.InvariantCulture);
             bool status = false;
-            using (var ctx = new selebreContext())
+            using (var ctx = new DbContext())
             {
                 DateTime empBday = ctx.Employee.FirstOrDefault(emp => emp.Id == id).Birthday.Date;
                 var empBdayAsString = empBday.ToString("dd/M/yyyy", CultureInfo.InvariantCulture);
