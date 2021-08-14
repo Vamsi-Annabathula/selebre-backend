@@ -29,6 +29,7 @@ namespace selebre_backend
         }
 
         public IConfiguration Configuration { get; }
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -54,6 +55,14 @@ namespace selebre_backend
                 options.UseSqlServerStorage("Server=tcp:selebre.database.windows.net,1433;Initial Catalog=selebre;Persist Security Info=False;User ID=selebre-user;Password=Technovert@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                builder => {
+                    builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
+                });
+            });
+
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICelebrationService, CelebrationService>();
@@ -73,6 +82,7 @@ namespace selebre_backend
 
             app.UseAuthorization();
 
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseHangfireDashboard();
             app.UseHangfireServer();
