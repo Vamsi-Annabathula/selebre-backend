@@ -32,14 +32,23 @@ namespace selebre_backend.Controllers
         [HttpGet("{id}/getMantra")]
         public ActionResult Get(int id)
         {
-
             string mantra = this.userService.GetMantra(id);
+
+            AdminSettingsView adminSettingsView = new AdminSettingsView
+            {
+                UserId = id,
+                Mantra = mantra
+            };
+
             if (mantra == null)
             {
-                return StatusCode(404, "mantra not set for this user");
+                return StatusCode(404, adminSettingsView);
             }
-            return StatusCode(200, mantra);
+            return StatusCode(200, adminSettingsView);
         }
+
+
+
         
         [Route("{id}/getComments")]
         [HttpGet]
